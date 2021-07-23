@@ -1,0 +1,72 @@
+---
+AWSTemplateFormatVersion: "version date"
+
+Description:
+  Deploy an VPC and an EC2
+
+Metadata:
+  template metadata
+
+Parameters:
+  MyVPCCIDR
+    Type: String
+    Default: 10.0.0.0/16
+    Description: Please enter the VPC CIDR
+
+  CIDRforSubnet1
+    Type: String
+    Default: 10.1.0.0/24
+    Description: Please enter a CIDR for subnet1 
+    
+  ImageIDEC2:
+    Type: String 
+    Description: Please provide Image ID for EC2
+    
+  InstanceTypeEC2:
+    Type: String
+    Description: Please provide EC2 instance
+
+  MyAvailabilityZone:
+    Type: String
+    Default: us-east-2
+    Description: Provide Availability zone
+
+
+Rules:
+  set of rules
+
+Mappings:
+  set of mappings
+
+Conditions:
+  set of conditions
+
+Transform:
+  set of transforms
+
+Resources:
+  MyVPC
+    Type: AWS::EC2::VPC
+    properties:
+      CidrBlock: !Ref MyVPCCIDR
+      EnableDnsHostnames: true
+      EnableDnsSupport: true
+      InstanceTenancy:
+      Tags:
+        - Tag
+        - Value
+
+
+  EC2Instance
+    Type: AWS::EC2::Instance
+    properties:
+      InstanceType: !Ref InstanceTypeEC2 
+      ImageID: !Ref ImageIDEC2
+      AvailabilityZone: !Ref MyAvailabilityZone
+
+  
+
+
+  
+Outputs:
+  set of outputs
